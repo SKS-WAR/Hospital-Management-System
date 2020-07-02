@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Hospital Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <style>
+      .mydiv{
+        background-color: #99ddff;
+      }
+      .mydiv1{
+        background-color:#1ab2ff;
+        width: 500px;
+        border: 5px solid black;
+        padding: 20px;
+        margin: 10;
+      }
+    </style>
+  </head>
+  <center>
+  
+    <div class="mydiv" >
+      <center>
+        <h1 align="center"><b>ABC Hospital Management System</b></h1>
+        <br />
+        <br />
+        <br>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for messages
+          in messages %}
+          <p>{{messages}}</p>
+          {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <body style="background-color: #1ab2ff;">
+        <div class="mydiv1">
+        <form action="/" method="POST">
+          <div class="log-form">
+            <h2>Login to your account</h2>
+            <form>
+              <p>
+                <input
+                  type="text"
+                  placeholder="username"
+                  name="uname"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  required
+                />
+              </p>
+              <p>
+                <input type="submit"></input>
+              </p>
+            </form>
+          </div>
+          <!--end log form -->
+        </form>
+      </center>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
