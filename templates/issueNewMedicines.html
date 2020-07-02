@@ -1,0 +1,31 @@
+{% extends "dropdown.html" %} {% block content %}
+<center>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %}
+</center>
+<center>
+  <body style="background-color: #1ab2ff;">
+    <h3><b>Add a new Medicine</b></h3>
+    <form action="#" method="post">
+      <label>Patient SSN name*</label>
+      <input type="number" name="ssn" id="ssn" value="{{ ssn }}" /><br />
+      <br />
+
+      <label>New Medicines to be added*</label>
+      <select name="med_name" id="med_name" required>
+        {% for medicines in medicines_list %}
+        <option value="{{ medicines.ws_med_name }}"
+          >{{ medicines.ws_med_name }}</option
+        >
+        {% endfor %}
+      </select>
+
+      <label>Quantity to be added*</label>
+      <input type="number" name="med_qty" id="med_qty" />
+
+      <input type="submit" value="Submit" />
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</center>
+{% endblock %}
