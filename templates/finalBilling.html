@@ -1,0 +1,145 @@
+{% extends "dropdown.html" %} {% block content %}
+<center>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %}
+</center>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+  }
+
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #8a8484;
+  }
+</style>
+<body style="background-color: #1ab2ff;">
+  <br />
+  <form action="#" method="post">
+    <table align="center" border="2" padding="5">
+      <thead>
+        <tr>
+          <th>Patient ID*</th>
+          <th>Name></th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>DOJ</th>
+          <th>Type of Room</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <input
+            type="number"
+            name="ssn"
+            id="ssn"
+            required
+            value="{{values.ws_ssn}}"
+          />
+        </tr>
+        <td>
+          {{values.ws_ssn}}
+        </td>
+        <td>
+          {{values.ws_pat_name}}
+        </td>
+        <td>
+          {{values.ws_age}}
+        </td>
+        <td>
+          {{values.ws_adrs}},{{values.ws_city}},{{values.ws_state}}
+        </td>
+        <td>
+          {{values.ws_doj}}
+        </td>
+        <td>
+          {{values.ws_rtype}}
+        </td>
+      </tbody>
+    </table>
+
+    <script>
+      function updateDB() {
+        // Selecting the input element and get its value
+        var inputVal = document.getElementById("ssn").value;
+        window.location.href =
+          "http://127.0.0.1:5000/finalBilling?ssn=" + inputVal;
+        // Displaying the value
+        //alert(inputVal);
+      }
+    </script>
+
+    <button type="button" onclick="updateDB();">search</button>
+
+    <hr />
+
+    Medicines Issued
+    <table align="center" id="medtable">
+      <tr>
+        <th>medicine</th>
+        <th>Quantity</th>
+        <th>rate</th>
+        <th>Amount</th>
+      </tr>
+
+      {% for med in medicine %}
+      <tr>
+        <td>{{med.ws_med_name}}</td>
+        <td>{{med.ws_qty}}</td>
+        <td>
+          Rs. {% for price in medicine_prices %} {% if price.ws_med_name ==
+          med.ws_med_name %} {{ price.ws_med_rt }} {% endif %} {% endfor %}
+        </td>
+        <td>
+          Rs. {% for price in medicine_prices %} {% if price.ws_med_name ==
+          med.ws_med_name %} {{ price.ws_med_rt * med.ws_qty }} {% endif %} {%
+          endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Total</td>
+        <td><span id="total"></span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <script>
+      var table = document.getElementById("medtable"),
+        sumVal = 0;
+      for (var i = 1; i < table.rows.length; i++) {
+        x = table.rows[i].cells[4].innerHTML;
+        x = x.substring(4);
+        sumVal = sumVal + parseInt(x);
+        console.log(sumVal);
+      }
+
+      document.getElementById("total").innerHTML = "Sum Value = " + sumVal;
+    </script>
+    <hr />
+    Diagnostics Conducted
+    <table align="center">
+      <tr>
+        <th>Name of the test</th>
+        <th>Amount</th>
+      </tr>
+      {% for daigon in daigonis %}
+      <tr>
+        <td>{{daigon.ws_diagn}}</td>
+        <td>
+          Rs. {% for price in daigonis_prices %} {% if price.ws_diagn_name ==
+          daigon.ws_diagn %} {{ price.ws_diagn_rt }} {% endif %} {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr />
+    <input type="submit" value="Confirm" />
+  </form>
+</body>
+{% endblock %}
