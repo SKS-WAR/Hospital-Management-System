@@ -1,0 +1,132 @@
+{% extends "dropdown.html" %} {% block content %}
+<center>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %}
+</center>
+<body style="background-color: #1ab2ff;">
+  <br />
+  <br />
+  <h2 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">
+    Patient Updation
+    </h2>
+    <br />
+
+        <script>
+            function getInputValue(){
+                // Selecting the input element and get its value 
+                var inputVal = document.getElementById("ssn").value;
+                window.location.href = "http://127.0.0.1:5000/updatePatient?ssn="+inputVal;
+                // Displaying the value
+                //alert(inputVal);
+            }
+        </script>
+         <!-- <button type="button" onclick="getInputValue();">Get</button> -->
+        <form action="#" method="post">
+            
+            <table align="center">
+            
+                <tr>
+                    <td><b>Patient SSN ID*</b><br /></td>
+         <td><input type="number" name="ssn" id ="ssn" required value="{{values.ws_ssn}}"><br>
+            <button
+            type="button" onclick="getInputValue();"
+          style="
+            background-color: black;
+            color: white;
+            width: 45px;
+            height: 20px;
+          "
+        >
+          Get
+        </button>
+        </td>
+        </tr>
+        <tr>
+          <td><b>Patient Name*</b><br /></td>
+           <td><input type="text" name="uname" id="uname" value="{{values.ws_pat_name}}"><br></td>
+        </tr>
+        <tr>
+          <td><b>Patient Age*</b><br /></td>
+           <td><input type="number" name="age" id="age"value="{{values.ws_age}}"><br></td>
+        </tr>
+        <tr>
+          <td><b>Date Of Admission*</b><br /></td>
+          <td> <input type="text" name="doj" id="doj" value="{{values.ws_doj}}"><br></td>
+        </tr>
+        <tr>
+          <td><b>Type Of Bed*</b><br /></td>
+          <td>
+            <select name="rtype" id="rtype" >
+                <option value="General" selected={{values.ws_rtype=="General"}} >General</option>
+                <option value="Semi" selected={{values.ws_rtype=="Semi"}}>Semi </option>
+                <option value="Single" selected={{values.ws_rtype=="Single"}}>Single </option>
+            </select>
+        </td>
+    </tr>          
+    <tr>
+        <td><b>Address</b><br /></td>
+         <td><input type="text" name="adrs" id="adrs" value="{{values.ws_adrs}}"><br></td>
+        </tr>
+        <tr>
+          <td><b>State</b><br /></td>
+          <td>
+            <select name="state" id="state" >
+                <option>Select</option>
+            <option value="Andhra Pradesh" selected={{values.ws_state=="Andhra Pradesh"}}>Andhra Pradesh</option>
+            <option value="Maharashtra" selected={{values.ws_state=="Maharashtra"}}>Maharashtra</option>
+            <option value="Gujarat" selected={{values.ws_state=="Gujarat"}}>Gujarat</option>
+            <option value="West Bengal" selected={{values.ws_state=="West Bengal"}}>West Bengal</option>
+            <option value="Odisha" selected={{values.ws_state=="Odisha"}}>Odisha</option>
+            <option value="Tamil Nadu" selected={{values.ws_state=="Tamil Nadu"}}>Tamil Nadu</option>
+            <option value="Jammu and Kashmir" selected={{values.ws_state=="Jammu and Kashmir"}}>Jammu and Kashmir</option>
+            <option value="Assam" selected={{values.ws_state=="Assam"}}>Assam</option>
+            <option value="Karnataka" selected={{values.ws_state=="Karnataka"}}>Karnataka</option>
+            <option value="Madhya Pradesh" selected={{values.ws_state=="Madhya Pradesh"}}>Madhya Pradesh</option>
+            <option value="Uttar Pradesh" selected={{values.ws_state=="Uttar Pradesh"}}>Uttar Pradesh</option>
+            <option value="Himachal Pradesh" selected={{values.ws_state=="Himachal Pradesh"}}>Himachal Pradesh</option>
+            </select><br>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <b>City</b>
+      </td>
+      <td>
+            <select name="city" id="city" >
+              <option>Select</option>
+              <option value="Mumbai" selected={{values.ws_city=="Mumbai"}}>Mumbai</option>
+              <option value="Pune" selected={{values.ws_city=="Pune"}}>Pune</option>
+              <option value="Kolkatta" selected={{values.ws_city=="Kolkatta"}}>Kolkatta</option>
+              <option value="Bangalore" selected={{values.ws_city=="Bangalore"}}>Bangalore</option>
+              <option value="Chennai" selected={{values.ws_city=="Chennai"}}>Chennai</option>
+              <option value="Bhubaneswar" selected={{values.ws_city=="Bhubaneswar"}}>Bhubaneswar</option>
+              <option value="Patna" selected={{values.ws_city=="Patna"}}>Patna</option>
+              <option value="Delhi" selected={{values.ws_city=="Delhi"}}>Delhi</option>
+              <option value="Ahmedabad" selected={{values.ws_city=="Ahmedabad"}}>Ahmedabad</option>
+              <option value="Maharashtra" selected={{values.ws_city=="Maharashtra"}}>Maharashtra</option>
+              <option value="Jaipur" selected={{values.ws_city=="Jaipur"}}>Jaipur</option>
+              <option value="Lucknow" selected={{values.ws_city=="Lucknow"}}>Lucknow</option>
+              <option value="Indore" selected={{values.ws_city=="Indore"}}>Indore</option>
+            </select><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+          <button
+            type="submit"
+            value="submit"
+            style="
+              background-color: black;
+              text-align: center;
+              color: white;
+              width: 75px;
+              height: 40px;
+            "
+          >
+            Update
+          </button>
+        </td>
+            
+        </form>
+    </body>
+    {% endblock %}
