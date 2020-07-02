@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body style="background: #009688;">
+    <br />
+    <br />
+    <h2 style="color: #fff;">
+      <center>ABC Hospital Management System</center>
+    </h2>
+    <br />
+    <hr />
+    <br />
+    <div class="container" style="color: #fff;">
+      <center>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %} {{ message }} {% endfor %} {% endif %} {% endwith
+        %}
+      </center>
+    </div>
+    {% for item in values %}
+    <p>ID: {{item._id}}</p>
+    <p>Name: {{item.name}}</p>
+    <p>password:{{item.password}}</p>
+    {% endfor %}
+  </body>
+</html>
