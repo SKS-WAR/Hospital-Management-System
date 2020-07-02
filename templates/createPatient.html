@@ -1,0 +1,123 @@
+{% extends "dropdown.html" %} {% block content %}
+<center>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %}
+</center>
+<body style="background-color: #1ab2ff;">
+  <br />
+  <br />
+  <h2 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">
+    Patient Registration
+  </h2>
+  <br />
+  <form action="#" method="post">
+    <table align="center">
+      <tr>
+        <td><b>Patient SSN ID*</b><br /></td>
+        <td><input type="number" name="ssn" required /><br /></td>
+      </tr>
+      <tr>
+        <td><b>Patient Name*</b><br /></td>
+        <td><input type="text" name="uname" id="uname" required /><br /></td>
+      </tr>
+      <tr>
+        <td><b>Patient Age*</b><br /></td>
+        <td><input type="number" name="age" id="age" required /><br /></td>
+      </tr>
+      <tr>
+        <td><b>Date Of Admission*</b><br /></td>
+        <td><input type="text" name="doj" id="doj" required /><br /></td>
+      </tr>
+      <tr>
+        <td><b>Type Of Bed*</b><br /></td>
+        <td>
+          <select name="rtype" id="rtype" required>
+            <option value="General">General</option>
+            <option value="Semi">Semi</option>
+            <option value="Single">Single</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Address</b><br /></td>
+        <td><input type="text" name="adrs" id="adrs" required /><br /></td>
+      </tr>
+      <tr>
+        <td><b>State</b><br /></td>
+        <td>
+          <select name="state" id="state" required>
+            <option>Select</option>
+            <option>Andhra Pradesh</option>
+            <option>Maharashtra</option>
+            <option>gujarat</option>
+            <option>West Bengal</option>
+            <option>odisha</option>
+            <option>Tamil Nadu</option>
+            <option>Jammu and Kashmir</option>
+            <option>Assam</option>
+            <option>Karnataka</option>
+            <option>Madhya Pradesh</option>
+            <option>Uttar Pradesh</option>
+            <option>Himachal Pradesh</option> </select
+          ><br />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>City</b>
+        </td>
+        <td>
+          <select name="city" id="city" required>
+            <option>Select</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Kolkatta</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>bbsr</option>
+            <option>Patna</option>
+            <option>Delhi</option>
+            <option>Ahmedabad</option>
+            <option>Maharashtra</option>
+            <option>ctc</option>
+            <option>Lucknow</option>
+            <option>Indore</option> </select
+          ><br />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button
+            type="submit"
+            value="submit"
+            style="
+              background-color: black;
+              text-align: center;
+              color: white;
+              width: 75px;
+              height: 40px;
+            "
+          >
+            Submit
+          </button>
+        </td>
+        <td>
+          <button
+            type="reset"
+            style="
+              background-color: black;
+              text-align: center;
+              color: white;
+              width: 75px;
+              height: 40px;
+            "
+          >
+            Reset
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+{% endblock %}
