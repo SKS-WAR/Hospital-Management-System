@@ -1,0 +1,57 @@
+{% extends "dropdown.html" %}
+
+<div class="container">
+  {% block content %}
+  <br />
+  <br />
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 70%;
+    }
+
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      background-color: #8a8484;
+    }
+  </style>
+  <body style="background-color: #1ab2ff;">
+    <center>
+      <form method="POST" ,action="/">
+        <h3>Patient List</h3>
+        <table border="2" padding="5">
+          <thead>
+            <tr>
+              <th>SSNId</th>
+              <th>Patient Name</th>
+              <th>Age</th>
+              <th>Date of Admission</th>
+              <th>Type of Bed</th>
+              <th>Address</th>
+              <th>State</th>
+              <th>City</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for patient in patients %}
+            <tr>
+              <td>{{patient.ws_ssn}}</td>
+              <td>{{patient.ws_pat_name}}</td>
+              <td>{{patient.ws_age}}</td>
+              <td>{{patient.ws_doj}}</td>
+              <td>{{patient.ws_rtype}}</td>
+              <td>{{patient.ws_adrs}}</td>
+              <td>{{patient.ws_state}}</td>
+              <td>{{patient.ws_city}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </form>
+    </center>
+  </body>
+  {% endblock %}
+</div>
