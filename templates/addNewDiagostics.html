@@ -1,0 +1,28 @@
+{% extends "dropdown.html" %} {% block content %}
+<center>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %}
+</center>
+<center>
+  <body style="background-color: #1ab2ff;">
+    <h3><b> Add a new Daigonis </b></h3>
+    <form align="center" action="#" method="post">
+      <label>Patient SSN name*</label>
+      <input type="number" name="ssn" id="ssn" value="{{ ssn }}" /><br />
+      <br />
+
+      <label>New Daigonsis to be added*</label>
+      <select name="daign" id="daign" required>
+        {% for daigonsis in daigonsis_list %}
+        <option value="{{ daigonsis.ws_diagn_name }}"
+          >{{ daigonsis.ws_diagn_name }}</option
+        >
+        {% endfor %}
+      </select>
+
+      <input type="submit" value="Submit" />
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+  {% endblock %}
+</center>
